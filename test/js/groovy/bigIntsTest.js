@@ -42,7 +42,7 @@ describe('Large Integers in Tables ', function () {
     it('Should display 64-bit Longs values ', function () {
       cellIndex = 0;
       var fileName = 'cell1_case1.png';
-      var width = 360, height = 90;
+      var width = 764, height = 150;
       var canvas = beakerxPO.runCellToGetCanvas(cellIndex);
       var imageData = beakerxPO.getCanvasImageData(canvas, width, height);
       beakerxPO.checkImageData(imageData.value, imageDir, fileName);
@@ -53,7 +53,7 @@ describe('Large Integers in Tables ', function () {
     it('Should display bignums values ', function () {
       cellIndex += 2;
       var fileName = 'cell2_case1.png';
-      var width = 360, height = 90;
+      var width = 795, height = 150;
       var canvas = beakerxPO.runCellToGetCanvas(cellIndex);
       var imageData = beakerxPO.getCanvasImageData(canvas, width, height);
       beakerxPO.checkImageData(imageData.value, imageDir, fileName);
