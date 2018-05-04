@@ -38,7 +38,7 @@ describe('Large Integers in Tables ', function () {
     });
   });
 
-  describe('64-bit Longs ', function () {
+  describe('64-bit Longs (fontSize=30)', function () {
     it('Should display 64-bit Longs values ', function () {
       cellIndex = 0;
       var fileName = 'cell1_case1.png';
@@ -49,11 +49,33 @@ describe('Large Integers in Tables ', function () {
     });
   });
 
-  describe('BigNums (arbitrary precision) ', function () {
+  describe('BigNums (arbitrary precision)(fontSize=30) ', function () {
     it('Should display bignums values ', function () {
-      cellIndex += 2;
+      cellIndex += 3;
       var fileName = 'cell2_case1.png';
       var width = 795, height = 150;
+      var canvas = beakerxPO.runCellToGetCanvas(cellIndex);
+      var imageData = beakerxPO.getCanvasImageData(canvas, width, height);
+      beakerxPO.checkImageData(imageData.value, imageDir, fileName);
+    });
+  });
+
+  describe('64-bit Longs (default font)', function () {
+    it('Should display 64-bit Longs values ', function () {
+      cellIndex += 3;
+      var fileName = 'cell3_case1.png';
+      var width = 360, height = 90;
+      var canvas = beakerxPO.runCellToGetCanvas(cellIndex);
+      var imageData = beakerxPO.getCanvasImageData(canvas, width, height);
+      beakerxPO.checkImageData(imageData.value, imageDir, fileName);
+    });
+  });
+
+  describe('BigNums (arbitrary precision) (default font) ', function () {
+    it('Should display bignums values ', function () {
+      cellIndex += 3;
+      var fileName = 'cell4_case1.png';
+      var width = 360, height = 90;
       var canvas = beakerxPO.runCellToGetCanvas(cellIndex);
       var imageData = beakerxPO.getCanvasImageData(canvas, width, height);
       beakerxPO.checkImageData(imageData.value, imageDir, fileName);
