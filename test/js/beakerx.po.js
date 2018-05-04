@@ -253,8 +253,11 @@ function BeakerXPageObject() {
     var absFileName = path.join(__dirname, '../resources/img', imgDir, fileName);
     var file1 = fs.readFileSync(absFileName);
     var file2 =  new Buffer(imageData, 'base64');
-    resemble(file1).compareTo(file2).onComplete(function(data){
+    var diff = resemble(file1).compareTo(file2).onComplete(function(data){
       console.log(fileName + ': misMatch=' + data.misMatchPercentage);
+      var stream = fs.createWriteStream(absFileName.replace('.png', 'dif.png'));
+      stream.write(data.getBuffer());
+      stream.end();
       expect(data.misMatchPercentage).toBeLessThan(mismatchPercentage);
     });
   };
